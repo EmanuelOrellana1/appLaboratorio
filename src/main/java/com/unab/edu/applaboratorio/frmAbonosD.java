@@ -41,22 +41,22 @@ public class frmAbonosD extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setText("Welcome");
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setText("WELCOME");
 
-        lblNombredelCajero.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblNombredelCajero.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblNombredelCajero.setText(".");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setText("Cantidad a Abonar");
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setText("CANTIDAD A ABONAR");
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel4.setText("Usuario a quien va a abonar");
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel4.setText("USUARIO A QUIEN VA A ABONAR");
 
         cmbUsuarioAb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnEnviarAb.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnEnviarAb.setText("Enviar Abono");
+        btnEnviarAb.setText("ENVIAR ABONO");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -101,7 +101,7 @@ public class frmAbonosD extends javax.swing.JFrame {
                 .addComponent(cmbUsuarioAb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
                 .addComponent(btnEnviarAb)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

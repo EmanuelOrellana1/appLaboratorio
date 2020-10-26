@@ -2,3 +2,5 @@ com\unab\edu\applaboratorio\frmLoguin$1.class
 com\unab\edu\applaboratorio\frmLoguin.class
 com\unab\edu\applaboratorio\frmSacarDinero.class
 com\unab\edu\applaboratorio\frmSacarDinero$1.class
+com\unab\edu\conexionbd\conexionbd.class
+com\unab\edu\applaboratorio\frmLoguin$2.class

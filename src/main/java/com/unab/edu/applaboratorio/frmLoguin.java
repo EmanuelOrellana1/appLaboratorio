@@ -28,32 +28,13 @@ public class frmLoguin extends javax.swing.JFrame {
      * Creates new form frmLoguin
      */
     
-    String valueMember[];
-    int contador = 1;
-
-//    public void displayMenber() {
-//
-//        DefaultComboBoxModel cbdefault = new DefaultComboBoxModel();
-//        clsUsuario ClaseUsuario = new clsUsuario();
-//        ArrayList<Usuario> Usuario = ClaseUsuario();
-//        valueMember = new String[Usuario.size() + 1];
-//        String filas[] = new String[3];
-//        cbdefault.addElement("");
-//        for (var IterarDatosUsuario : Usuario) {
-//            filas[0] = String.valueOf(IterarDatosUsuario.get));
-//            filas[1] = IterarDatosPersona.getNombre();
-//            valueMember[contador] = filas[0];
-//            cbdefault.addElement(filas[1]);
-//            contador++;
-//        }
-//        cbUSUARIOS.setModel(cbdefault);
-//    }
+    
 
     
     public frmLoguin() {
         initComponents();
         this.setLocationRelativeTo(null);
-//        displayMenber();
+
       
     }
 

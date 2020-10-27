@@ -3,12 +3,19 @@ com\unab\edu\applaboratorio\frmSacarDinero.class
 com\unab\udu\Entidades\Usuario.class
 com\unab\edu\conexionbd\conexionbd.class
 com\unab\udu\DAO\clsTipoUsuario.class
+<<<<<<< HEAD
 com\unab\edu\applaboratorio\frmLoguin$2.class
+=======
+>>>>>>> 6eb0d81f11e390fef3f54cad74d1775f46a7f199
 com\unab\edu\applaboratorio\frmLoguin$1.class
 com\unab\udu\Entidades\CuentasUsuario.class
 com\unab\udu\DAO\clsCuentaUsuario.class
 com\unab\edu\applaboratorio\frmSacarDinero$1.class
+<<<<<<< HEAD
 com\unab\edu\applaboratorio\frmAbonosD.class
 com\unab\udu\Entidades\Tipo.class
 com\unab\edu\applaboratorio\frmAbonosD$1.class
+=======
+com\unab\udu\Entidades\Tipo.class
+>>>>>>> 6eb0d81f11e390fef3f54cad74d1775f46a7f199
 com\unab\udu\DAO\clsUsuario.class

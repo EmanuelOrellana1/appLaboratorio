@@ -12,24 +12,13 @@ import com.unab.udu.Entidades.Tipo;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import com.unab.udu.DAO.clsTipoUsuario;
-import com.unab.udu.DAO.clsUsuario;
-import com.unab.udu.Entidades.Tipo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.ArrayList;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
-import com.unab.udu.DAO.clsUsuario;
 import com.unab.udu.Entidades.Usuario;
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -37,12 +26,10 @@ import javax.swing.DefaultComboBoxModel;
  * @author orell
  */
 public class frmLoguin extends javax.swing.JFrame {
-    
+
     String valueMember[];
     int contador = 1;
 
-
-    
     public frmLoguin() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -53,15 +40,15 @@ public class frmLoguin extends javax.swing.JFrame {
     public void displayMenber() {
 
         DefaultComboBoxModel cbdefault = new DefaultComboBoxModel();
-        clsTipoUsuario ClaseUsuario = new clsTipoUsuario();
-        ArrayList<Tipo> Personas = ClaseUsuario.MostrartipoUsuario();
-        valueMember = new String[Personas.size() + 1];
+        clsTipoUsuario ClasetUsuario = new clsTipoUsuario();
+        ArrayList<Tipo> Usuario = ClasetUsuario.MostrartipoUsuario();
+        valueMember = new String[Usuario.size() + 1];
         String filas[] = new String[3];
 
         cbdefault.addElement("");
-        for (var IterarDatosPersona : Personas) {
-            filas[0] = String.valueOf(IterarDatosPersona.getId());
-            filas[1] = IterarDatosPersona.getTipoUs();
+        for (var IterarDatostUsuario : Usuario) {
+            filas[0] = String.valueOf(IterarDatostUsuario.getId());
+            filas[1] = IterarDatostUsuario.getTipoUs();
             valueMember[contador] = filas[0];
             cbdefault.addElement(filas[1]);
             contador++;
@@ -183,18 +170,16 @@ public class frmLoguin extends javax.swing.JFrame {
 
             if (variablecontenedoraconsultaBd == true) {
                 JOptionPane.showMessageDialog(null, "Welcome");
-                if(opcion==1)
-                {
-                frmAbonosD Abonos = new frmAbonosD();
-                Abonos.setVisible(true);
-                this.dispose();
-                }else if(opcion == 2)
-                {
-                frmSacarDinero Sacar = new frmSacarDinero();
-                Sacar.setVisible(true);
-                this.dispose();
+                if (opcion == 1) {
+                    frmAbonosD Abonos = new frmAbonosD();
+                    Abonos.setVisible(true);
+                    this.dispose();
+                } else if (opcion == 2) {
+                    frmSacarDinero Sacar = new frmSacarDinero();
+                    Sacar.setVisible(true);
+                    this.dispose();
                 }
-            }else {
+            } else {
                 JOptionPane.showMessageDialog(null, "STOP");
 
             }
@@ -206,9 +191,6 @@ public class frmLoguin extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
-
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

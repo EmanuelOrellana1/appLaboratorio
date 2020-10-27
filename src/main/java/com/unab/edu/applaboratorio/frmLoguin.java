@@ -56,6 +56,8 @@ public class frmLoguin extends javax.swing.JFrame {
         cbUSUARIOS.setModel(cbdefault);
 
     }
+    
+    public static int enviodedato;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -167,6 +169,7 @@ public class frmLoguin extends javax.swing.JFrame {
 
             clsUsuario Uss = new clsUsuario();
             var variablecontenedoraconsultaBd = Uss.Loguin(user, pass, opcion);
+            var variblecontenerdato =Uss.IdUsuario(user, pass, opcion);
 
             if (variablecontenedoraconsultaBd == true) {
                 JOptionPane.showMessageDialog(null, "Welcome");
@@ -176,6 +179,7 @@ public class frmLoguin extends javax.swing.JFrame {
                     this.dispose();
                 } else if (opcion == 2) {
                     frmSacarDinero Sacar = new frmSacarDinero();
+                    enviodedato = variblecontenerdato;
                     Sacar.setVisible(true);
                     this.dispose();
                 }

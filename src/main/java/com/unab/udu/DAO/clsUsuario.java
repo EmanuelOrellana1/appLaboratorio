@@ -80,6 +80,25 @@ public class clsUsuario {
         }
         return false;
     }
+  
+  public int IdUsuario(String usuario, String Pass, int Combo){
+  
+      int recogerId=0;
+      try {
+          CallableStatement st = conectar.prepareCall("call SP_S_Loguin (?,?,?)");
+
+            st.setString("pusuario", usuario);
+            st.setString("ppass", Pass);
+            st.setInt("ptipoUsuario", Combo);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                recogerId = rs.getInt("idUsuario");
+            }
+      } catch (Exception e) {
+          
+      }
+      return recogerId;
+  }
     
     
     

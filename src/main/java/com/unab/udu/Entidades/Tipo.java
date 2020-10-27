@@ -5,10 +5,12 @@
  */
 package com.unab.udu.Entidades;
 
+import lombok.Data;
+
 /**
  *
  * @author orell
- */
+ */@Data
 public class Tipo {
 
     protected int Id;

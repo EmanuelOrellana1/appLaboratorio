@@ -5,14 +5,17 @@
  */
 package com.unab.udu.Entidades;
 
+import lombok.Data;
+
 /**
  *
  * @author orell
  */
+@Data
 public class Usuario extends Tipo{
 
     protected int IdUsuario;
     protected String Usuario;
     protected String Contra;
-    protected String TipoUsuario;
+    
 }

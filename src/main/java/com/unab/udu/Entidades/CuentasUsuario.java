@@ -6,11 +6,13 @@
 package com.unab.udu.Entidades;
 
 import java.sql.Date;
+import lombok.Data;
 
 /**
  *
  * @author orell
  */
+@Data
 public class CuentasUsuario extends Usuario {
 
     protected int IdCuentaUsuario;

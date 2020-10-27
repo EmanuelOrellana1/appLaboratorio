@@ -6,13 +6,17 @@
 package com.unab.udu.Entidades;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class Usuario extends Tipo{
 
     protected int IdUsuario;
     protected String Usuario;
     protected String Contra;
+    
+    
     
 }

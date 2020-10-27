@@ -5,7 +5,7 @@
  */
 package com.unab.udu.Entidades;
 
-import java.sql.Date;
+import java.util.Date;
 import lombok.Data;
 
 /**
@@ -16,7 +16,7 @@ import lombok.Data;
 public class CuentasUsuario extends Usuario {
 
     protected int IdCuentaUsuario;
-    protected double Saldo;
+    protected String Saldo;
     protected int Transaccion;
     protected Date Fecha;
 }

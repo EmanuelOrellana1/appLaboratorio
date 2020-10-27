@@ -6,6 +6,7 @@ com\unab\udu\DAO\clsTipoUsuario.class
 com\unab\edu\applaboratorio\frmLoguin$2.class
 com\unab\edu\applaboratorio\frmLoguin$1.class
 com\unab\udu\Entidades\CuentasUsuario.class
+com\unab\edu\applaboratorio\frmAbonosD$2.class
 com\unab\udu\DAO\clsCuentaUsuario.class
 com\unab\edu\applaboratorio\frmSacarDinero$1.class
 com\unab\edu\applaboratorio\frmAbonosD.class

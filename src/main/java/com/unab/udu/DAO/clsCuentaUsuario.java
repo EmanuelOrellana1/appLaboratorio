@@ -5,10 +5,61 @@
  */
 package com.unab.udu.DAO;
 
+import com.unab.edu.conexionbd.conexionbd;
+import com.unab.udu.Entidades.CuentasUsuario;
+import com.unab.udu.Entidades.Usuario;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import lombok.Data;
+
 /**
  *
  * @author PC
  */
+@Data
 public class clsCuentaUsuario {
     
+    conexionbd conectarclase = new conexionbd();
+    Connection conectar = conectarclase.retornarConexion();
+    
+    public ArrayList<Usuario> MostrarUsuario() {
+        ArrayList<Usuario> UsuarioD = new ArrayList<>();
+        try {
+            CallableStatement Statement = conectar.prepareCall("call SP_S_ComboAbonar()");
+            ResultSet resultadoDeConsulta = Statement.executeQuery();
+            
+            while (resultadoDeConsulta.next()) {
+                Usuario us = new Usuario();
+                us.setIdUsuario(resultadoDeConsulta.getInt("idUsuario"));
+                us.setUsuario(resultadoDeConsulta.getString("Usuario"));
+                us.setContra(resultadoDeConsulta.getString("PassWord"));
+                us.setId(resultadoDeConsulta.getInt("tipoUsuario"));
+                
+                UsuarioD.add(us);
+            }
+//            conectar.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return UsuarioD;
+    }
+    
+    public void AgregarCuenta(CuentasUsuario cuentas) {
+        try {
+            CallableStatement consulta = conectar.prepareCall("call SP_I_AbonarD(?,?,?,?)");
+            consulta.setString("PSaldo", cuentas.getSaldo());
+            consulta.setInt("PidUsuario", cuentas.getIdUsuario());
+            consulta.setInt("PTransaccion", cuentas.getTransaccion());
+            consulta.setDate("PFecha", new java.sql.Date(cuentas.getFecha().getTime()));
+            consulta.executeQuery();
+            JOptionPane.showMessageDialog(null, "Insercion Completada");
+            conectar.close();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
 }

@@ -7,10 +7,7 @@ package com.unab.udu.Entidades;
 
 import lombok.Data;
 
-/**
- *
- * @author orell
- */
+
 @Data
 public class Usuario extends Tipo{
 

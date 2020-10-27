@@ -7,15 +7,11 @@ package com.unab.udu.Entidades;
 
 import lombok.Data;
 
-/**
- *
- * @author orell
-<<<<<<< HEAD
- */@Data
-=======
- */
+
+
+
 @Data
->>>>>>> 6eb0d81f11e390fef3f54cad74d1775f46a7f199
+
 public class Tipo {
 
     protected int Id;

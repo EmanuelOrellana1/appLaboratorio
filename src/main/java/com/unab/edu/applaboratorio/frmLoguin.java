@@ -6,7 +6,12 @@
 package com.unab.edu.applaboratorio;
 
 import com.unab.edu.conexionbd.conexionbd;
-<<<<<<< HEAD
+import com.unab.udu.DAO.clsTipoUsuario;
+import com.unab.udu.DAO.clsUsuario;
+import com.unab.udu.Entidades.Tipo;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import com.unab.udu.DAO.clsTipoUsuario;
 import com.unab.udu.DAO.clsUsuario;
 import com.unab.udu.Entidades.Tipo;
@@ -15,7 +20,6 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-=======
 import com.unab.udu.DAO.clsUsuario;
 import com.unab.udu.Entidades.Usuario;
 import java.sql.Connection;
@@ -27,52 +31,24 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
->>>>>>> 6eb0d81f11e390fef3f54cad74d1775f46a7f199
 
 /**
  *
  * @author orell
  */
 public class frmLoguin extends javax.swing.JFrame {
-
-<<<<<<< HEAD
-=======
-    /**
-     * Creates new form frmLoguin
-     */
     
     String valueMember[];
     int contador = 1;
 
-//    public void displayMenber() {
-//
-//        DefaultComboBoxModel cbdefault = new DefaultComboBoxModel();
-//        clsUsuario ClaseUsuario = new clsUsuario();
-//        ArrayList<Usuario> Usuario = ClaseUsuario();
-//        valueMember = new String[Usuario.size() + 1];
-//        String filas[] = new String[3];
-//        cbdefault.addElement("");
-//        for (var IterarDatosUsuario : Usuario) {
-//            filas[0] = String.valueOf(IterarDatosUsuario.get));
-//            filas[1] = IterarDatosPersona.getNombre();
-//            valueMember[contador] = filas[0];
-//            cbdefault.addElement(filas[1]);
-//            contador++;
-//        }
-//        cbUSUARIOS.setModel(cbdefault);
-//    }
 
->>>>>>> 6eb0d81f11e390fef3f54cad74d1775f46a7f199
     
     public frmLoguin() {
         initComponents();
         this.setLocationRelativeTo(null);
-<<<<<<< HEAD
+
         displayMenber();
     }
-    
-        String valueMember[];
-    int contador = 1;
 
     public void displayMenber() {
 
@@ -91,10 +67,7 @@ public class frmLoguin extends javax.swing.JFrame {
             contador++;
         }
         cbUSUARIOS.setModel(cbdefault);
-=======
-//        displayMenber();
-      
->>>>>>> 6eb0d81f11e390fef3f54cad74d1775f46a7f199
+
     }
 
     /**

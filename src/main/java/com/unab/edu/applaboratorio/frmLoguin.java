@@ -6,6 +6,16 @@
 package com.unab.edu.applaboratorio;
 
 import com.unab.edu.conexionbd.conexionbd;
+<<<<<<< HEAD
+import com.unab.udu.DAO.clsTipoUsuario;
+import com.unab.udu.DAO.clsUsuario;
+import com.unab.udu.Entidades.Tipo;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+=======
 import com.unab.udu.DAO.clsUsuario;
 import com.unab.udu.Entidades.Usuario;
 import java.sql.Connection;
@@ -17,6 +27,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+>>>>>>> 6eb0d81f11e390fef3f54cad74d1775f46a7f199
 
 /**
  *
@@ -24,6 +35,8 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class frmLoguin extends javax.swing.JFrame {
 
+<<<<<<< HEAD
+=======
     /**
      * Creates new form frmLoguin
      */
@@ -49,12 +62,39 @@ public class frmLoguin extends javax.swing.JFrame {
 //        cbUSUARIOS.setModel(cbdefault);
 //    }
 
+>>>>>>> 6eb0d81f11e390fef3f54cad74d1775f46a7f199
     
     public frmLoguin() {
         initComponents();
         this.setLocationRelativeTo(null);
+<<<<<<< HEAD
+        displayMenber();
+    }
+    
+        String valueMember[];
+    int contador = 1;
+
+    public void displayMenber() {
+
+        DefaultComboBoxModel cbdefault = new DefaultComboBoxModel();
+        clsTipoUsuario ClaseUsuario = new clsTipoUsuario();
+        ArrayList<Tipo> Personas = ClaseUsuario.MostrartipoUsuario();
+        valueMember = new String[Personas.size() + 1];
+        String filas[] = new String[3];
+
+        cbdefault.addElement("");
+        for (var IterarDatosPersona : Personas) {
+            filas[0] = String.valueOf(IterarDatosPersona.getId());
+            filas[1] = IterarDatosPersona.getTipoUs();
+            valueMember[contador] = filas[0];
+            cbdefault.addElement(filas[1]);
+            contador++;
+        }
+        cbUSUARIOS.setModel(cbdefault);
+=======
 //        displayMenber();
       
+>>>>>>> 6eb0d81f11e390fef3f54cad74d1775f46a7f199
     }
 
     /**
@@ -73,9 +113,9 @@ public class frmLoguin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtUSER = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtPASS = new javax.swing.JTextField();
         cbUSUARIOS = new javax.swing.JComboBox<>();
         btnENTRAR = new javax.swing.JButton();
+        txtPASS = new javax.swing.JPasswordField();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -93,10 +133,15 @@ public class frmLoguin extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setText("PASSWORD");
 
-        cbUSUARIOS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbUSUARIOS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Usuario" }));
 
         btnENTRAR.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnENTRAR.setText("ENTRAR");
+        btnENTRAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnENTRARActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -105,19 +150,19 @@ public class frmLoguin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUSER)
-                            .addComponent(txtPASS)
-                            .addComponent(cbUSUARIOS, 0, 290, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(125, 125, 125)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(118, 118, 118)
-                        .addComponent(btnENTRAR)))
+                        .addComponent(btnENTRAR))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUSER)
+                            .addComponent(cbUSUARIOS, 0, 290, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPASS))))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -152,6 +197,38 @@ public class frmLoguin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnENTRARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnENTRARActionPerformed
+        String user = txtUSER.getText();
+        String pass = txtPASS.getText();
+        int opcion = Integer.parseInt(valueMember[cbUSUARIOS.getSelectedIndex()]);
+
+        if (!user.isEmpty() && !pass.isEmpty()) {
+
+            clsUsuario Uss = new clsUsuario();
+            var variablecontenedoraconsultaBd = Uss.Loguin(user, pass, opcion);
+
+            if (variablecontenedoraconsultaBd == true) {
+                JOptionPane.showMessageDialog(null, "Welcome");
+                if(opcion==1)
+                {
+                frmAbonosD Abonos = new frmAbonosD();
+                Abonos.setVisible(true);
+                this.dispose();
+                }else if(opcion == 2)
+                {
+                frmSacarDinero Sacar = new frmSacarDinero();
+                Sacar.setVisible(true);
+                this.dispose();
+                }
+            }else {
+                JOptionPane.showMessageDialog(null, "STOP");
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Llena los Datos");
+        }
+    }//GEN-LAST:event_btnENTRARActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,7 +277,7 @@ public class frmLoguin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField txtPASS;
+    private javax.swing.JPasswordField txtPASS;
     private javax.swing.JTextField txtUSER;
     // End of variables declaration//GEN-END:variables
 }

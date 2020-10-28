@@ -16,7 +16,7 @@ import lombok.Data;
 public class CuentasUsuario extends Usuario {
 
     protected int IdCuentaUsuario;
-    protected String Saldo;
+    protected double Saldo;
     protected int Transaccion;
     protected Date Fecha;
 }

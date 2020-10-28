@@ -50,7 +50,7 @@ public class clsCuentaUsuario {
     public void AgregarCuenta(CuentasUsuario cuentas) {
         try {
             CallableStatement consulta = conectar.prepareCall("call SP_I_AbonarD(?,?,?,?)");
-            consulta.setString("PSaldo", cuentas.getSaldo());
+            consulta.setDouble("PSaldo", cuentas.getSaldo());
             consulta.setInt("PidUsuario", cuentas.getIdUsuario());
             consulta.setInt("PTransaccion", cuentas.getTransaccion());
             consulta.setDate("PFecha", new java.sql.Date(cuentas.getFecha().getTime()));
@@ -62,4 +62,29 @@ public class clsCuentaUsuario {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+    
+    public ArrayList<CuentasUsuario> MostrarCuenta(CuentasUsuario ccuentas) {
+        ArrayList<CuentasUsuario> usuario = new ArrayList<>();
+        try {
+            CallableStatement st = conectar.prepareCall("call SP_S_SacarD(?)");
+            st.setInt("PidUsuario", ccuentas.getIdUsuario());
+            ResultSet resultadoDeConsulta = st.executeQuery();
+
+            while (resultadoDeConsulta.next()) {
+                CuentasUsuario cu = new CuentasUsuario();
+                cu.setSaldo(resultadoDeConsulta.getDouble("saldo"));
+                cu.setTransaccion(resultadoDeConsulta.getInt("transaccion"));
+                cu.setFecha(resultadoDeConsulta.getDate("fecha"));
+                
+               
+
+                usuario.add(cu);
+            }
+//            conectar.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return usuario;
+  }
+    
 }

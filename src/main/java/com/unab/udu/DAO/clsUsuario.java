@@ -6,6 +6,7 @@
 package com.unab.udu.DAO;
 
 import com.unab.edu.conexionbd.conexionbd;
+import com.unab.udu.Entidades.CuentasUsuario;
 import com.unab.udu.Entidades.Usuario;
 import java.awt.List;
 import java.sql.CallableStatement;
@@ -85,7 +86,7 @@ public class clsUsuario {
   
       int recogerId=0;
       try {
-          CallableStatement st = conectar.prepareCall("call SP_S_Loguin (?,?,?)");
+          CallableStatement st = conectar.prepareCall("call SP_S_Loguin(?,?,?)");
 
             st.setString("pusuario", usuario);
             st.setString("ppass", Pass);
@@ -95,11 +96,11 @@ public class clsUsuario {
                 recogerId = rs.getInt("idUsuario");
             }
       } catch (Exception e) {
-          
+          JOptionPane.showMessageDialog(null, e);
       }
       return recogerId;
   }
     
-    
-    
+  
+  
 }

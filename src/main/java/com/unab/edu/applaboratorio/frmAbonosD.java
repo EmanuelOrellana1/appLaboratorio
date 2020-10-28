@@ -166,7 +166,7 @@ public class frmAbonosD extends javax.swing.JFrame {
 
         clsCuentaUsuario CuentasUsuario = new clsCuentaUsuario();
         CuentasUsuario cu = new CuentasUsuario();
-        cu.setSaldo(txtCantidadAb.getText());
+        cu.setSaldo(Double.parseDouble(txtCantidadAb.getText()));
         cu.setIdUsuario(Integer.parseInt(valueMember[cmbUsuarioAb.getSelectedIndex()]));
         System.out.println((Integer.parseInt(valueMember[cmbUsuarioAb.getSelectedIndex()])));
         cu.setTransaccion(1);

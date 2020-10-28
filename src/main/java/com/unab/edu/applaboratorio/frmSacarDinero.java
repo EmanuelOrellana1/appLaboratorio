@@ -5,6 +5,12 @@
  */
 package com.unab.edu.applaboratorio;
 
+import com.unab.udu.DAO.clsCuentaUsuario;
+import com.unab.udu.Entidades.CuentasUsuario;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author orell
@@ -17,10 +23,37 @@ public class frmSacarDinero extends javax.swing.JFrame {
     public frmSacarDinero() {
         initComponents();
         this.setLocationRelativeTo(null);
+        MostrarTabla();
       
     }
     
+    SimpleDateFormat formato = new SimpleDateFormat("d MMM y");
     
+void MostrarTabla() {
+        String TITULOS[] = {"SALDO", "TRANSACCION", "FECHA"};
+        DefaultTableModel ModeloTabla = new DefaultTableModel(null, TITULOS);
+        clsCuentaUsuario clasecuentas = new clsCuentaUsuario();
+        CuentasUsuario ccuenta = new CuentasUsuario();
+        ccuenta.setIdUsuario(frmLoguin.enviodedato);
+        ArrayList<CuentasUsuario> usu = clasecuentas.MostrarCuenta(ccuenta);
+        String filas[] = new String[4];
+        
+        for(var Datoscuenta : usu){
+        filas[0] = String.valueOf(Datoscuenta.getSaldo());
+        filas[1] = String.valueOf(Datoscuenta.getTransaccion());
+        filas[2] = String.valueOf(formato.format(Datoscuenta.getFecha()));
+        
+        if(Datoscuenta.getTransaccion() == 1){
+            filas[1] = "ABONO";
+        }else if(Datoscuenta.getTransaccion() == 2){
+        filas[1] = "CARGO";
+        }
+        ModeloTabla.addRow(filas);
+         
+        }
+        tbMOSTRAR.setModel(ModeloTabla);
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,11 +69,10 @@ public class frmSacarDinero extends javax.swing.JFrame {
         txtRetiroD = new javax.swing.JTextField();
         btnRetirar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbMOSTRAR = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         lblCantidad = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,7 +89,7 @@ public class frmSacarDinero extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbMOSTRAR.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -68,7 +100,7 @@ public class frmSacarDinero extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbMOSTRAR);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText("HISTORIAL DE MOVIMIENTO DE DINERO");
@@ -78,8 +110,6 @@ public class frmSacarDinero extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("SALDO DISPONIBLE");
-
-        jLabel3.setText(".");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -96,9 +126,7 @@ public class frmSacarDinero extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtRetiroD, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(102, 102, 102))))
+                        .addGap(102, 522, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -117,9 +145,7 @@ public class frmSacarDinero extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtRetiroD))
+                .addComponent(txtRetiroD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -155,7 +181,7 @@ public class frmSacarDinero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
-      jLabel3.setText( String.valueOf(frmLoguin.enviodedato));
+      
     }//GEN-LAST:event_btnRetirarActionPerformed
 
     /**
@@ -197,12 +223,11 @@ public class frmSacarDinero extends javax.swing.JFrame {
     private javax.swing.JButton btnRetirar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCantidad;
+    private javax.swing.JTable tbMOSTRAR;
     private javax.swing.JTextField txtRetiroD;
     // End of variables declaration//GEN-END:variables
 }

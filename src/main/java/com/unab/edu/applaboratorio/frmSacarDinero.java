@@ -25,10 +25,8 @@ public class frmSacarDinero extends javax.swing.JFrame {
     public frmSacarDinero() {
         initComponents();
         this.setLocationRelativeTo(null);
-        CalcularTotal();
         MostrarTabla();
-        
-
+        CalcularTotal();
     }
 
     SimpleDateFormat formato = new SimpleDateFormat("d MMM y");
@@ -61,19 +59,18 @@ public class frmSacarDinero extends javax.swing.JFrame {
 
     String verificar;
     Double totalfinal;
-   
 
-    void CalcularTotal() {    
+    void CalcularTotal() {
         totalfinal = 0.0;
         for (int i = 0; i < tbMOSTRAR.getRowCount(); i++) {
             verificar = String.valueOf(tbMOSTRAR.getValueAt(i, 1));
-             if (verificar.equals("ABONO")) {
-           totalfinal += Double.parseDouble(String.valueOf(tbMOSTRAR.getValueAt(i, 0)));
-        } else if (verificar.equals("CARGO")) {
-             totalfinal -= Double.parseDouble(String.valueOf(tbMOSTRAR.getValueAt(i, 0)));
+            if (verificar.equals("ABONO")) {
+                totalfinal += Double.parseDouble(String.valueOf(tbMOSTRAR.getValueAt(i, 0)));
+            } else if (verificar.equals("CARGO")) {
+                totalfinal -= Double.parseDouble(String.valueOf(tbMOSTRAR.getValueAt(i, 0)));
+            }
         }
-        }
-       lblCantidad.setText(String.valueOf(totalfinal));
+        lblCantidad.setText(String.valueOf(totalfinal));
 
     }
 
@@ -128,7 +125,7 @@ public class frmSacarDinero extends javax.swing.JFrame {
         jLabel2.setText("HISTORIAL DE MOVIMIENTO DE DINERO");
 
         lblCantidad.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblCantidad.setText(".");
+        lblCantidad.setText("0.0");
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("SALDO DISPONIBLE");
@@ -141,14 +138,10 @@ public class frmSacarDinero extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRetirar)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtRetiroD, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(102, 522, Short.MAX_VALUE))))
+                    .addComponent(btnRetirar)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRetiroD, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -202,24 +195,31 @@ public class frmSacarDinero extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    double cantidad;
+    double total;
     private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
 
-        double cantidad = Double.parseDouble(txtRetiroD.getText());
-        if (cantidad % 5 == 0) {
-            Date fecha = new Date();
-            clsCuentaUsuario CuentasUsuario = new clsCuentaUsuario();
-            CuentasUsuario cu = new CuentasUsuario();
-            cu.setSaldo(Double.parseDouble(txtRetiroD.getText()));
-            cu.setIdUsuario(frmLoguin.enviodedato);
-            cu.setTransaccion(2);
-            cu.setFecha(fecha);
-            CuentasUsuario.AgregarCuenta(cu);
-
-            MostrarTabla();
-            CalcularTotal();
-
+        cantidad = Double.parseDouble(txtRetiroD.getText());
+        total = Double.parseDouble(lblCantidad.getText());
+        if (total < cantidad) {
+            JOptionPane.showMessageDialog(null, "Ya no tienes dinero. Abona mas");
         } else {
-            JOptionPane.showMessageDialog(null, "Solo ingrese multiplos de 5");
+            if (cantidad % 5 == 0) {
+                Date fecha = new Date();
+                clsCuentaUsuario CuentasUsuario = new clsCuentaUsuario();
+                CuentasUsuario cu = new CuentasUsuario();
+                cu.setSaldo(Double.parseDouble(txtRetiroD.getText()));
+                cu.setIdUsuario(frmLoguin.enviodedato);
+                cu.setTransaccion(2);
+                cu.setFecha(fecha);
+                CuentasUsuario.AgregarCuenta(cu);
+
+                MostrarTabla();
+                CalcularTotal();
+            } else {
+                JOptionPane.showMessageDialog(null, "Solo puedes retirar cantidades divisibles entre 5 ");
+            }
+
         }
 
 

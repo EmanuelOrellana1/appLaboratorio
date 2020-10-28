@@ -201,7 +201,7 @@ public class frmSacarDinero extends javax.swing.JFrame {
 
         cantidad = Double.parseDouble(txtRetiroD.getText());
         total = Double.parseDouble(lblCantidad.getText());
-        if (total < cantidad) {
+        if (total < cantidad || cantidad == 0 || cantidad < 0) {
             JOptionPane.showMessageDialog(null, "Ya no tienes dinero. Abona mas");
         } else {
             if (cantidad % 5 == 0) {

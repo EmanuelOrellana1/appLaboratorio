@@ -25,7 +25,9 @@ public class frmSacarDinero extends javax.swing.JFrame {
     public frmSacarDinero() {
         initComponents();
         this.setLocationRelativeTo(null);
+        CalcularTotal();
         MostrarTabla();
+        
 
     }
 
@@ -54,6 +56,24 @@ public class frmSacarDinero extends javax.swing.JFrame {
 
         }
         tbMOSTRAR.setModel(ModeloTabla);
+
+    }
+
+    String verificar;
+    Double totalfinal;
+   
+
+    void CalcularTotal() {    
+        totalfinal = 0.0;
+        for (int i = 0; i < tbMOSTRAR.getRowCount(); i++) {
+            verificar = String.valueOf(tbMOSTRAR.getValueAt(i, 1));
+             if (verificar.equals("ABONO")) {
+           totalfinal += Double.parseDouble(String.valueOf(tbMOSTRAR.getValueAt(i, 0)));
+        } else if (verificar.equals("CARGO")) {
+             totalfinal -= Double.parseDouble(String.valueOf(tbMOSTRAR.getValueAt(i, 0)));
+        }
+        }
+       lblCantidad.setText(String.valueOf(totalfinal));
 
     }
 
@@ -183,8 +203,9 @@ public class frmSacarDinero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
+
         double cantidad = Double.parseDouble(txtRetiroD.getText());
-        if(cantidad % 5 == 0) {
+        if (cantidad % 5 == 0) {
             Date fecha = new Date();
             clsCuentaUsuario CuentasUsuario = new clsCuentaUsuario();
             CuentasUsuario cu = new CuentasUsuario();
@@ -195,14 +216,13 @@ public class frmSacarDinero extends javax.swing.JFrame {
             CuentasUsuario.AgregarCuenta(cu);
 
             MostrarTabla();
+            CalcularTotal();
 
+        } else {
+            JOptionPane.showMessageDialog(null, "Solo ingrese multiplos de 5");
         }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Solo ingrese multiplos de 5" );
-}
-        
-          
+
+
     }//GEN-LAST:event_btnRetirarActionPerformed
 
     /**

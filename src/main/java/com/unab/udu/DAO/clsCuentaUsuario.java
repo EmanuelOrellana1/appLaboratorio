@@ -40,7 +40,7 @@ public class clsCuentaUsuario {
                 
                 UsuarioD.add(us);
             }
-//            conectar.close();
+            conectar.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -80,7 +80,7 @@ public class clsCuentaUsuario {
 
                 usuario.add(cu);
             }
-//            conectar.close();
+            conectar.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }

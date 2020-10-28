@@ -161,6 +161,8 @@ public class frmLoguin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 public static int enviodedato;
+
+public static String enviodenombre;
     private void btnENTRARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnENTRARActionPerformed
         String user = txtUSER.getText();
         String pass = txtPASS.getText();
@@ -173,8 +175,9 @@ public static int enviodedato;
             var variblecontenerdato =Uss.IdUsuario(user, pass, opcion);
 
             if (variablecontenedoraconsultaBd == true) {
-                JOptionPane.showMessageDialog(null, "Welcome");
+                JOptionPane.showMessageDialog(null, "WELCOME ");
                 if (opcion == 1) {
+                    enviodenombre = txtUSER.getText();
                     frmAbonosD Abonos = new frmAbonosD();
                     Abonos.setVisible(true);
                     this.dispose();

@@ -32,6 +32,7 @@ public class frmAbonosD extends javax.swing.JFrame {
         displayMember();
         Calendar calen = Calendar.getInstance();
         jdcalendario.setCalendar(calen);
+        lblNombredelCajero.setText(frmLoguin.enviodenombre);
     }
 
     String valueMember[];
@@ -115,7 +116,7 @@ public class frmAbonosD extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblNombredelCajero))
+                                .addComponent(lblNombredelCajero, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(txtCantidadAb)

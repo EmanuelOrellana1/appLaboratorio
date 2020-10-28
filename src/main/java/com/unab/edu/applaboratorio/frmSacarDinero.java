@@ -9,6 +9,8 @@ import com.unab.udu.DAO.clsCuentaUsuario;
 import com.unab.udu.Entidades.CuentasUsuario;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,12 +26,12 @@ public class frmSacarDinero extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         MostrarTabla();
-      
+
     }
-    
+
     SimpleDateFormat formato = new SimpleDateFormat("d MMM y");
-    
-void MostrarTabla() {
+
+    void MostrarTabla() {
         String TITULOS[] = {"SALDO", "TRANSACCION", "FECHA"};
         DefaultTableModel ModeloTabla = new DefaultTableModel(null, TITULOS);
         clsCuentaUsuario clasecuentas = new clsCuentaUsuario();
@@ -37,22 +39,22 @@ void MostrarTabla() {
         ccuenta.setIdUsuario(frmLoguin.enviodedato);
         ArrayList<CuentasUsuario> usu = clasecuentas.MostrarCuenta(ccuenta);
         String filas[] = new String[4];
-        
-        for(var Datoscuenta : usu){
-        filas[0] = String.valueOf(Datoscuenta.getSaldo());
-        filas[1] = String.valueOf(Datoscuenta.getTransaccion());
-        filas[2] = String.valueOf(formato.format(Datoscuenta.getFecha()));
-        
-        if(Datoscuenta.getTransaccion() == 1){
-            filas[1] = "ABONO";
-        }else if(Datoscuenta.getTransaccion() == 2){
-        filas[1] = "CARGO";
-        }
-        ModeloTabla.addRow(filas);
-         
+
+        for (var Datoscuenta : usu) {
+            filas[0] = String.valueOf(Datoscuenta.getSaldo());
+            filas[1] = String.valueOf(Datoscuenta.getTransaccion());
+            filas[2] = String.valueOf(formato.format(Datoscuenta.getFecha()));
+
+            if (Datoscuenta.getTransaccion() == 1) {
+                filas[1] = "ABONO";
+            } else if (Datoscuenta.getTransaccion() == 2) {
+                filas[1] = "CARGO";
+            }
+            ModeloTabla.addRow(filas);
+
         }
         tbMOSTRAR.setModel(ModeloTabla);
-        
+
     }
 
     /**
@@ -181,7 +183,26 @@ void MostrarTabla() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
-      
+        double cantidad = Double.parseDouble(txtRetiroD.getText());
+        if(cantidad % 5 == 0) {
+            Date fecha = new Date();
+            clsCuentaUsuario CuentasUsuario = new clsCuentaUsuario();
+            CuentasUsuario cu = new CuentasUsuario();
+            cu.setSaldo(Double.parseDouble(txtRetiroD.getText()));
+            cu.setIdUsuario(frmLoguin.enviodedato);
+            cu.setTransaccion(2);
+            cu.setFecha(fecha);
+            CuentasUsuario.AgregarCuenta(cu);
+
+            MostrarTabla();
+
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Solo ingrese multiplos de 5" );
+}
+        
+          
     }//GEN-LAST:event_btnRetirarActionPerformed
 
     /**
